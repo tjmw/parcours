@@ -1,14 +1,11 @@
 import * as THREE from 'three';
+import { getRouteBounds } from './route';
 import { Point } from './types';
 
 export const renderRoutePoints = (routePoints: Point[]) => {
-	const minLon = Math.min(...routePoints.map((p) => p.lon));
-	const maxLon = Math.max(...routePoints.map((p) => p.lon));
-	const minLat = Math.min(...routePoints.map((p) => p.lat));
-	const maxLat = Math.max(...routePoints.map((p) => p.lat));
-	const minEle = Math.min(...routePoints.map((p) => p.ele));
-	const maxEle = Math.max(...routePoints.map((p) => p.ele));
-	console.log({ minLon, maxLon, minLat, maxLat, minEle, maxEle });
+	const { minLon, maxLon, minLat, maxLat, minEle, maxEle } = getRouteBounds(
+		routePoints,
+	);
 
 	const renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -39,7 +36,7 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 	// |  /
 	// |_______________X (lon - East/West)
 
-	const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+	const material = new THREE.LineBasicMaterial({ color: 0xf0f3f4 });
 	const points = routePoints.map((rp: Point) => {
 		const x = THREE.MathUtils.mapLinear(rp.lon, minLon, maxLon, 0, 100);
 		const y = THREE.MathUtils.mapLinear(rp.lat, minLat, maxLat, 0, 150);
