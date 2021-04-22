@@ -3,5 +3,12 @@
   "version": "0.0.1",
   "main": "index.js",
   "author": "Tom Wey <tom.wey@theguardian.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "devDependencies": {
+    "snowpack": "^3.3.5"
+  }
 }
