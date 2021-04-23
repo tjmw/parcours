@@ -23,7 +23,7 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 
 	const renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
-	document.getElementById('scene').appendChild(renderer.domElement);
+	document.getElementById('scene').replaceChildren(renderer.domElement);
 
 	const camera = new THREE.PerspectiveCamera(
 		45,

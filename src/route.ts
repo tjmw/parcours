@@ -1,5 +1,6 @@
 import GpxParser from 'gpxparser';
-import routeReference from './routeData/Bread_Cheese_Route.gpx';
+import fixie from './routeData/Fixie.gpx';
+import breadAndCheese from './routeData/Bread_Cheese_Route.gpx';
 import type { Point, RouteBounds } from './types';
 
 const rawGpxToPoints = (rawGpx: string): Point[] => {
@@ -8,7 +9,13 @@ const rawGpxToPoints = (rawGpx: string): Point[] => {
 	return gpx.tracks[0].points;
 };
 
-export const getRoutePoints = (): Promise<Point[]> => {
+const routeMappings = {
+	fixie,
+	breadAndCheese,
+};
+export const getRoutePoints = (routeName: string): Promise<Point[]> => {
+	const routeReference = routeMappings[routeName];
+
 	return fetch(routeReference)
 		.then((response) => {
 			return response.text();
