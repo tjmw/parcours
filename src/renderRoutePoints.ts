@@ -17,7 +17,7 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 		1,
 		500,
 	);
-	camera.position.set(75, 0, 200);
+	camera.position.set(150, 0, 250);
 	camera.lookAt(50, 75, 0);
 
 	const scene = new THREE.Scene();
@@ -48,8 +48,6 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 	const line = new THREE.Line(geometry, material);
 	scene.add(line);
 
-	renderer.render(scene, camera);
-
 	// const scene = new THREE.Scene();
 	// const camera = new THREE.PerspectiveCamera(
 	// 	75,
@@ -71,12 +69,11 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 
 	const animate = () => {
 		requestAnimationFrame(animate);
-		console.log('rotate!');
 		// line.rotation.x += 0.01;
-		line.rotation.y += 0.01;
+		// line.rotation.y += 0.01;
 		// line.rotation.z += 0.01;
 		renderer.render(scene, camera);
 	};
 
-	// animate();
+	animate();
 };
