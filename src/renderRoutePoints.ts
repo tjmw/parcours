@@ -7,7 +7,13 @@ const SHOULD_ROTATE = true;
 const COLOR_MAPPINGS = [0xdaf7a6, 0x64d2ac, 0xffc300, 0xff5733, 0xc70039];
 
 const colorFromEle = (ele: number, minEle: number, maxEle: number) => {
-	const normalizedEle = THREE.MathUtils.mapLinear(ele, minEle, maxEle, 0, 5);
+	const normalizedEle = THREE.MathUtils.mapLinear(
+		ele,
+		minEle,
+		maxEle,
+		0,
+		COLOR_MAPPINGS.length,
+	);
 	return COLOR_MAPPINGS[Math.floor(normalizedEle)];
 };
 
