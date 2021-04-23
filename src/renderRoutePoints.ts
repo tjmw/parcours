@@ -2,8 +2,6 @@ import * as THREE from 'three';
 import { getRouteBounds } from './route';
 import { Point } from './types';
 
-const SHOULD_ROTATE = true;
-
 const COLOR_MAPPINGS = [0xdaf7a6, 0x64d2ac, 0xffc300, 0xff5733, 0xc70039];
 
 const colorFromEle = (ele: number, minEle: number, maxEle: number) => {
@@ -24,7 +22,7 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 
 	const renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
-	document.body.appendChild(renderer.domElement);
+	document.getElementById('scene').appendChild(renderer.domElement);
 
 	const camera = new THREE.PerspectiveCamera(
 		45,
@@ -95,7 +93,8 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 	const animate = () => {
 		requestAnimationFrame(animate);
 
-		if (SHOULD_ROTATE) {
+		const shouldRotate = document.querySelector('#animate').checked;
+		if (shouldRotate) {
 			map.rotation.y += 0.01;
 		}
 
