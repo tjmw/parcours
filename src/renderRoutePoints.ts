@@ -30,13 +30,13 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 	// cube.position.set(-1, 1, -10);
 	// scene.add(cube);
 
-	// Y (ele)      Z (lat - North/South)
+	// Y (lat - N/S) Z (ele)
 	// |          /
 	// |        /
 	// |      /
 	// |    /
 	// |  /
-	// |_______________X (lon - East/West)
+	// |_______________X (lon - E/W)
 
 	const material = new THREE.LineBasicMaterial({ color: 0xf0f3f4 });
 	const points = routePoints.map((rp: Point) => {
