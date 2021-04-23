@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { getRouteBounds } from './route';
 import { Point } from './types';
 
+const SHOULD_ROTATE = true;
+
 export const renderRoutePoints = (routePoints: Point[]) => {
 	const { minLon, maxLon, minLat, maxLat, minEle, maxEle } = getRouteBounds(
 		routePoints,
@@ -69,9 +71,11 @@ export const renderRoutePoints = (routePoints: Point[]) => {
 
 	const animate = () => {
 		requestAnimationFrame(animate);
-		// line.rotation.x += 0.01;
-		// line.rotation.y += 0.01;
-		// line.rotation.z += 0.01;
+
+		if (SHOULD_ROTATE) {
+			line.rotation.y += 0.01;
+		}
+
 		renderer.render(scene, camera);
 	};
 
