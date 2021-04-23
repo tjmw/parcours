@@ -10,8 +10,9 @@ const colorFromEle = (ele: number, minEle: number, maxEle: number) => {
 		minEle,
 		maxEle,
 		0,
-		COLOR_MAPPINGS.length,
+		COLOR_MAPPINGS.length - 0.01,
 	);
+
 	return COLOR_MAPPINGS[Math.floor(normalizedEle)];
 };
 
