@@ -4,7 +4,7 @@ import { Point } from './types';
 
 const SHOULD_ROTATE = true;
 
-const COLOR_MAPPINGS = [0xc70039, 0xff5733, 0xffc300, 0x64d2ac, 0xdaf7a6];
+const COLOR_MAPPINGS = [0xdaf7a6, 0x64d2ac, 0xffc300, 0xff5733, 0xc70039];
 
 const colorFromEle = (ele: number, minEle: number, maxEle: number) => {
 	const normalizedEle = THREE.MathUtils.mapLinear(ele, minEle, maxEle, 0, 5);
